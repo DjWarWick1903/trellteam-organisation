@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>ro.trellteam</groupId>
-	<artifactId>trellteam-organisation</artifactId>
+	<artifactId>organisation</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>trellteam-organisation</name>
 	<description>Trellteam service meant for organisation operations</description>
