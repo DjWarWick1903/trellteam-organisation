@@ -1,9 +1,11 @@
 package ro.trellteam.organisation.data.exceptions.advicer;
 
+import io.micrometer.common.util.StringUtils;
+import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.util.CollectionUtils;
@@ -14,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import javax.validation.ConstraintViolationException;
 import java.time.Instant;
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -39,7 +40,7 @@ public class ExceptionAdvicer extends ResponseEntityExceptionHandler {
     private static final String TYPE = "type";
 
     @Override
-    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException exception, HttpHeaders headers, HttpStatus status, WebRequest request) {
+    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException exception, HttpHeaders headers, HttpStatusCode statusCode, WebRequest request) {
         List<String> validationErrors = exception.getBindingResult()
                 .getFieldErrors()
                 .stream()
@@ -49,7 +50,8 @@ public class ExceptionAdvicer extends ResponseEntityExceptionHandler {
     }
 
     @Override
-    protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException exception, HttpHeaders headers, HttpStatus status, WebRequest request) {
+    protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException exception, HttpHeaders headers, HttpStatusCode statusCode, WebRequest request) {
+        final HttpStatus status = HttpStatus.valueOf(statusCode.value());
         return getExceptionResponseEntity(exception, status, request, Collections.singletonList(exception.getLocalizedMessage()));
     }
 

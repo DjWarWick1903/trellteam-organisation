@@ -1,5 +1,6 @@
 package ro.trellteam.organisation.bu.controller.v1;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +13,6 @@ import ro.trellteam.organisation.data.dto.response.ObjectResponse;
 import ro.trellteam.organisation.data.exceptions.TrellGenericException;
 import ro.trellteam.organisation.bu.service.v1.DepartmentService;
 
-import javax.validation.Valid;
 import java.net.URI;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;

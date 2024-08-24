@@ -1,5 +1,6 @@
 package ro.trellteam.organisation.bu.service.v1;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,6 @@ import ro.trellteam.organisation.repository.DepartmentRepositoryImpl;
 import ro.trellteam.organisation.repository.EmployeeRepositoryImpl;
 import ro.trellteam.organisation.repository.OrganisationRepositoryImpl;
 
-import javax.transaction.Transactional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
