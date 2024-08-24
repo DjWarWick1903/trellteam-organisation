@@ -7,7 +7,7 @@ import ro.trellteam.organisation.repository.domain.Employee;
 import java.util.Optional;
 
 @Repository
-public interface EmployeeRepository extends JpaRepository<Employee, Long> {
+public interface EmployeeRepo extends JpaRepository<Employee, Long> {
     //@Query("SELECT DISTINCT d.employees FROM DEPARTMENT d, ORGANISATION o, IN(o.departments) de WHERE o.id = :id")
     //List<Employee> listOrganisationEmployees(@Param("id") Long idOrg);
 

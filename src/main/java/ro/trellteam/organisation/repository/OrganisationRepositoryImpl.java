@@ -10,7 +10,7 @@ import ro.trellteam.organisation.data.exceptions.TrellGenericException;
 @Slf4j
 @RequiredArgsConstructor
 public class OrganisationRepositoryImpl {
-    private final OrganisationRepository organisationRepository;
+    private final OrganisationRepo organisationRepo;
 
     /**
      * Method used to return the organisation starting from a provided name.
@@ -23,7 +23,7 @@ public class OrganisationRepositoryImpl {
 
         Organisation organisation = null;
         try {
-            organisation = organisationRepository.findByName(name);
+            organisation = organisationRepo.findByName(name);
         } catch(Exception e) {
             log.error(e.getMessage());
             throw new TrellGenericException("ORG_ERR_1");
@@ -45,7 +45,7 @@ public class OrganisationRepositoryImpl {
 
         Organisation organisation = null;
         try {
-            organisation = organisationRepository.findByDepartmentId(id);
+            organisation = organisationRepo.findByDepartmentId(id);
         } catch(Exception e) {
             log.error(e.getMessage());
             throw new TrellGenericException("ORG_ERR_1");
@@ -67,7 +67,7 @@ public class OrganisationRepositoryImpl {
 
         Organisation organisation = null;
         try {
-            organisation = organisationRepository.findById(id).get();
+            organisation = organisationRepo.findById(id).get();
         } catch(Exception e) {
             log.error(e.getMessage());
             throw new TrellGenericException("ORG_ERR_1");
@@ -86,7 +86,7 @@ public class OrganisationRepositoryImpl {
      */
     public Organisation save(Organisation organisation) {
         log.debug("OrganisationService--save--IN");
-        organisation = organisationRepository.save(organisation);
+        organisation = organisationRepo.save(organisation);
         log.debug("OrganisationService--save--OUT");
 
         return organisation;
@@ -99,7 +99,7 @@ public class OrganisationRepositoryImpl {
     public void deleteById(final Long id) {
         log.debug("OrganisationService--deleteById--IN");
         log.debug("OrganisationService--deleteById--id: {}", id);
-        organisationRepository.deleteById(id);
+        organisationRepo.deleteById(id);
         log.debug("OrganisationService--deleteById--OUT");
     }
 }

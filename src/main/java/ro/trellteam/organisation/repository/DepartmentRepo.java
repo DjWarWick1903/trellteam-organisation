@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface DepartmentRepository extends JpaRepository<Department, Long> {
+public interface DepartmentRepo extends JpaRepository<Department, Long> {
     Optional<Department> findById(Long id);
     Department findByName(String name);
 

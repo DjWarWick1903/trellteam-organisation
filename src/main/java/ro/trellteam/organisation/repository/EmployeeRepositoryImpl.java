@@ -12,7 +12,7 @@ import java.util.Set;
 @Slf4j
 @RequiredArgsConstructor
 public class EmployeeRepositoryImpl {
-    private final EmployeeRepository employeeRepository;
+    private final EmployeeRepo employeeRepo;
     private final OrganisationRepositoryImpl organisationRepository;
 
     /**
@@ -34,7 +34,7 @@ public class EmployeeRepositoryImpl {
     public Employee findById(final Long id) {
         log.debug("EmployeeService--findById--IN");
         log.debug("EmployeeService--findById--id: {}", id);
-        final Employee employee = employeeRepository.findById(id).get();
+        final Employee employee = employeeRepo.findById(id).get();
         log.debug("EmployeeService--findById--employee: {}", employee);
         log.debug("EmployeeService--findById--OUT");
         return employee;
@@ -47,7 +47,7 @@ public class EmployeeRepositoryImpl {
      */
     public Employee save(Employee employee) {
         log.debug("EmployeeService--save--IN");
-        employee = employeeRepository.save(employee);
+        employee = employeeRepo.save(employee);
         log.debug("EmployeeService--save--employee: {}", employee);
         log.debug("EmployeeService--save--IN");
         return employee;
@@ -55,7 +55,7 @@ public class EmployeeRepositoryImpl {
 
     public Employee saveAndFlush(final Employee employee) {
         log.debug("EmployeeService--saveAndFlush--IN");
-        return employeeRepository.saveAndFlush(employee);
+        return employeeRepo.saveAndFlush(employee);
     }
 
     /**
@@ -65,7 +65,7 @@ public class EmployeeRepositoryImpl {
     public void deleteById(final Long id) {
         log.debug("EmployeeService--deleteById--IN");
         log.debug("EmployeeService--deleteById--id: {}", id);
-        employeeRepository.deleteById(id);
+        employeeRepo.deleteById(id);
         log.debug("EmployeeService--deleteById--OUT");
     }
 }

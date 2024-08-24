@@ -12,7 +12,7 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 public class DepartmentRepositoryImpl {
-    private final DepartmentRepository departmentRepository;
+    private final DepartmentRepo departmentRepo;
 
     /**
      * Method used to return the department starting from a provided name.
@@ -25,7 +25,7 @@ public class DepartmentRepositoryImpl {
 
         Department department = null;
         try {
-            department = departmentRepository.findByName(name);
+            department = departmentRepo.findByName(name);
         } catch(Exception e) {
             log.error(e.getMessage());
             throw new TrellGenericException("ORG_ERR_2");
@@ -47,7 +47,7 @@ public class DepartmentRepositoryImpl {
 
         List<Department> departments = null;
         try {
-            departments = departmentRepository.findByEmployeeId(id);
+            departments = departmentRepo.findByEmployeeId(id);
         } catch(final Exception e) {
             log.error(e.getMessage());
             throw new TrellGenericException("ORG_ERR_2");
@@ -69,7 +69,7 @@ public class DepartmentRepositoryImpl {
 
         Department department = null;
         try {
-            department = departmentRepository.findById(id).get();
+            department = departmentRepo.findById(id).get();
         } catch(final Exception e) {
             log.error(e.getMessage());
             throw new TrellGenericException("ORG_ERR_2");
@@ -87,7 +87,7 @@ public class DepartmentRepositoryImpl {
      */
     public Department save(Department department) {
         log.debug("DepartmentService--save--IN");
-        department = departmentRepository.save(department);
+        department = departmentRepo.save(department);
         log.debug("DepartmentService--save--department: {}", department);
         log.debug("DepartmentService--save--OUT");
         return department;
@@ -100,7 +100,7 @@ public class DepartmentRepositoryImpl {
     public void deleteById(final Long id) {
         log.debug("DepartmentService--deleteById--IN");
         log.debug("DepartmentService--deleteById--id: {}" , id);
-        departmentRepository.deleteById(id);
+        departmentRepo.deleteById(id);
         log.debug("DepartmentService--deleteById--OUT");
     }
 }

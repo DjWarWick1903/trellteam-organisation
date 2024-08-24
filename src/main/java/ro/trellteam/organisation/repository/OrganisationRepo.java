@@ -9,7 +9,7 @@ import ro.trellteam.organisation.repository.domain.Organisation;
 import java.util.Optional;
 
 @Repository
-public interface OrganisationRepository extends JpaRepository<Organisation, Long> {
+public interface OrganisationRepo extends JpaRepository<Organisation, Long> {
 
     Organisation findByName(String name);
     @Query("SELECT o FROM ORGANISATION o, IN(o.departments) d WHERE d.id = :id")
